@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Header = () => {
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
@@ -11,15 +13,17 @@ const Header = () => {
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-blue-900">Tracksuit.pk</h1>
+            <Link href="/" className="text-2xl font-bold text-blue-900">
+              Tracksuit.pk
+            </Link>
           </div>
           
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="/" className="text-gray-700 hover:text-blue-600 font-medium">Home</a>
-            <a href="/products" className="text-gray-700 hover:text-blue-600 font-medium">Products</a>
-            <a href="/about" className="text-gray-700 hover:text-blue-600 font-medium">About</a>
-            <a href="/contact" className="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+            <Link href="/" className="text-gray-700 hover:text-blue-600 font-medium">Home</Link>
+            <Link href="/products" className="text-gray-700 hover:text-blue-600 font-medium">Products</Link>
+            <Link href="/about" className="text-gray-700 hover:text-blue-600 font-medium">About</Link>
+            <Link href="/contact" className="text-gray-700 hover:text-blue-600 font-medium">Contact</Link>
           </nav>
           
           {/* Right Side */}
@@ -37,17 +41,17 @@ const Header = () => {
             </div>
             
             {/* Cart */}
-            <a href="/cart" className="relative text-gray-700 hover:text-blue-600">
+            <Link href="/cart" className="relative text-gray-700 hover:text-blue-600">
               🛒
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                 0
               </span>
-            </a>
+            </Link>
             
             {/* User Account */}
-            <a href="/login" className="text-gray-700 hover:text-blue-600">
+            <Link href="/login" className="text-gray-700 hover:text-blue-600">
               👤
-            </a>
+            </Link>
             
             {/* Mobile Menu Button */}
             <button className="md:hidden text-gray-700 hover:text-blue-600">
@@ -58,11 +62,11 @@ const Header = () => {
         
         {/* Category Navigation */}
         <div className="hidden md:flex items-center space-x-6 py-3 border-t border-gray-200">
-          <a href="/category/mens" className="text-gray-700 hover:text-blue-600 font-medium">Men's Collection</a>
-          <a href="/category/womens" className="text-gray-700 hover:text-blue-600 font-medium">Women's Collection</a>
-          <a href="/category/kids" className="text-gray-700 hover:text-blue-600 font-medium">Kids Collection</a>
-          <a href="/reviews" className="text-gray-700 hover:text-blue-600 font-medium">Product Reviews</a>
-          <a href="/returns" className="text-gray-700 hover:text-blue-600 font-medium">Return Policy</a>
+          <Link href="/category/mens" className="text-gray-700 hover:text-blue-600 font-medium">Men&apos;s Collection</Link>
+          <Link href="/category/womens" className="text-gray-700 hover:text-blue-600 font-medium">Women&apos;s Collection</Link>
+          <Link href="/category/kids" className="text-gray-700 hover:text-blue-600 font-medium">Kids Collection</Link>
+          <Link href="/reviews" className="text-gray-700 hover:text-blue-600 font-medium">Product Reviews</Link>
+          <Link href="/returns" className="text-gray-700 hover:text-blue-600 font-medium">Return Policy</Link>
         </div>
       </div>
     </header>

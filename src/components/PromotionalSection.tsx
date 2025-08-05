@@ -9,7 +9,7 @@ const PromotionalSection = () => {
           Upto 50% OFF
         </h3>
         <p className="text-lg mb-6">
-          Hurry up! Don't miss the opportunity to get amazing designs and premium quality tracksuits for this latest summer collection.
+          Hurry up! Don&apos;t miss the opportunity to get amazing designs and premium quality tracksuits for this latest summer collection.
         </p>
         <button className="bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
           New Summer Collection

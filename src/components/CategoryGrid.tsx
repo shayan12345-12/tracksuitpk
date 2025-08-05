@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const CategoryGrid = () => {
   const categories = [
     {
@@ -50,9 +52,9 @@ const CategoryGrid = () => {
             <div className="p-4">
               <h3 className="font-semibold text-gray-900 mb-2">{category.name}</h3>
               <p className="text-gray-600 mb-3">{category.description}</p>
-              <a href={`/category/${category.id}`} className="text-blue-600 hover:text-blue-800 font-semibold">
+              <Link href={`/category/${category.id}`} className="text-blue-600 hover:text-blue-800 font-semibold">
                 Shop Now →
-              </a>
+              </Link>
             </div>
           </div>
         ))}

@@ -7,7 +7,7 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold mb-4">Tracksuit.pk</h3>
             <p className="text-gray-300 mb-4">
-              Pakistan's premier destination for high-quality tracksuits and athletic wear.
+              Pakistan&apos;s premier destination for high-quality tracksuits and athletic wear.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-white">📘</a>
@@ -34,8 +34,8 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Collections</h4>
             <ul className="space-y-2">
-              <li><a href="/category/mens" className="text-gray-300 hover:text-white">Men's Collection</a></li>
-              <li><a href="/category/womens" className="text-gray-300 hover:text-white">Women's Collection</a></li>
+              <li><a href="/category/mens" className="text-gray-300 hover:text-white">Men&apos;s Collection</a></li>
+              <li><a href="/category/womens" className="text-gray-300 hover:text-white">Women&apos;s Collection</a></li>
               <li><a href="/category/kids" className="text-gray-300 hover:text-white">Kids Collection</a></li>
               <li><a href="/category/summer" className="text-gray-300 hover:text-white">Summer Tracksuits</a></li>
               <li><a href="/category/winter" className="text-gray-300 hover:text-white">Winter Tracksuits</a></li>

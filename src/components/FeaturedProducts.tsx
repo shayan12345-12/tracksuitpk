@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const FeaturedProducts = () => {
   const featuredProducts = [
     {
@@ -42,9 +44,9 @@ const FeaturedProducts = () => {
     <section className="mb-12">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold text-gray-900">Summer Tracksuits</h2>
-        <a href="/products" className="text-blue-600 hover:text-blue-800 font-semibold">
+        <Link href="/products" className="text-blue-600 hover:text-blue-800 font-semibold">
           View all
-        </a>
+        </Link>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {featuredProducts.map((product) => (
