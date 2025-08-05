@@ -1,6 +1,7 @@
 "use client";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const ProductsPage = () => {
   const searchParams = useSearchParams();
@@ -16,7 +17,7 @@ const ProductsPage = () => {
       savePercent: "40%",
       reviews: 209,
       category: "Summer Tracksuits",
-      color: "blue"
+      image: "https://picsum.photos/400/300?random=1"
     },
     {
       id: 2,
@@ -26,7 +27,7 @@ const ProductsPage = () => {
       savePercent: "40%",
       reviews: 3,
       category: "Safari Suits",
-      color: "gray"
+      image: "https://picsum.photos/400/300?random=2"
     },
     {
       id: 3,
@@ -36,7 +37,7 @@ const ProductsPage = () => {
       savePercent: "40%",
       reviews: 17,
       category: "Summer Tracksuits",
-      color: "green"
+      image: "https://picsum.photos/400/300?random=3"
     },
     {
       id: 4,
@@ -46,7 +47,7 @@ const ProductsPage = () => {
       savePercent: "40%",
       reviews: 0,
       category: "Safari Suits",
-      color: "black"
+      image: "https://picsum.photos/400/300?random=4"
     },
     {
       id: 5,
@@ -56,7 +57,7 @@ const ProductsPage = () => {
       savePercent: "47%",
       reviews: 3,
       category: "Polo Shirts",
-      color: "green"
+      image: "https://picsum.photos/400/300?random=5"
     },
     {
       id: 6,
@@ -66,7 +67,7 @@ const ProductsPage = () => {
       savePercent: "47%",
       reviews: 1,
       category: "Polo Shirts",
-      color: "beige"
+      image: "https://picsum.photos/400/300?random=6"
     },
     {
       id: 7,
@@ -76,7 +77,7 @@ const ProductsPage = () => {
       savePercent: "44%",
       reviews: 0,
       category: "Trousers",
-      color: "black"
+      image: "https://picsum.photos/400/300?random=7"
     },
     {
       id: 8,
@@ -86,7 +87,7 @@ const ProductsPage = () => {
       savePercent: "40%",
       reviews: 1,
       category: "T-Shirts",
-      color: "white"
+      image: "https://picsum.photos/400/300?random=8"
     }
   ];
 
@@ -115,29 +116,6 @@ const ProductsPage = () => {
     } else {
       setFilteredProducts(allProducts);
     }
-  };
-
-  const getColorClass = (color: string) => {
-    const colors: { [key: string]: string } = {
-      blue: "from-blue-100 to-blue-200",
-      gray: "from-gray-100 to-gray-200",
-      green: "from-green-100 to-green-200",
-      black: "from-gray-800 to-gray-900",
-      beige: "from-yellow-100 to-orange-100",
-      white: "from-gray-50 to-white"
-    };
-    return colors[color] || "from-blue-100 to-gray-200";
-  };
-
-  const getEmoji = (category: string) => {
-    const emojis: { [key: string]: string } = {
-      "Summer Tracksuits": "👕",
-      "Safari Suits": "🎽",
-      "Polo Shirts": "👔",
-      "T-Shirts": "👕",
-      "Trousers": "👖"
-    };
-    return emojis[category] || "👕";
   };
 
   return (
@@ -186,15 +164,14 @@ const ProductsPage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredProducts.map((product) => (
             <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-              <div className={`h-48 relative overflow-hidden bg-gradient-to-br ${getColorClass(product.color)}`}>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-blue-500 rounded-full mx-auto mb-2 flex items-center justify-center">
-                      <span className="text-white text-2xl">{getEmoji(product.category)}</span>
-                    </div>
-                    <p className="text-gray-600 text-sm font-medium">{product.name.split(' - ')[0]}</p>
-                  </div>
-                </div>
+              <div className="h-48 relative overflow-hidden">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                />
               </div>
               <div className="p-4">
                 <h3 className="font-semibold text-gray-900 mb-2">{product.name}</h3>
