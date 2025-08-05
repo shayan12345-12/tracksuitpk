@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const KidsCollectionPage = () => {
   const kidsProducts = [
     {
@@ -7,7 +9,8 @@ const KidsCollectionPage = () => {
       salePrice: "Rs.2,499.00",
       savePercent: "44%",
       reviews: 4,
-      category: "Summer Tracksuits"
+      category: "Summer Tracksuits",
+      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center"
     },
     {
       id: 2,
@@ -16,7 +19,8 @@ const KidsCollectionPage = () => {
       salePrice: "Rs.2,499.99",
       savePercent: "44%",
       reviews: 0,
-      category: "Polo Sets"
+      category: "Polo Sets",
+      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop&crop=center"
     },
     {
       id: 3,
@@ -25,7 +29,8 @@ const KidsCollectionPage = () => {
       salePrice: "Rs.2,499.99",
       savePercent: "44%",
       reviews: 3,
-      category: "Polo Twinsets"
+      category: "Polo Twinsets",
+      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop&crop=center"
     },
     {
       id: 4,
@@ -34,7 +39,28 @@ const KidsCollectionPage = () => {
       salePrice: "Rs.2,499.99",
       savePercent: "44%",
       reviews: 0,
-      category: "Polo Twinsets"
+      category: "Polo Twinsets",
+      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop&crop=center"
+    },
+    {
+      id: 5,
+      name: "Kids Summer Tracksuit - Blue",
+      originalPrice: "Rs.4,000.00",
+      salePrice: "Rs.2,299.99",
+      savePercent: "43%",
+      reviews: 2,
+      category: "Summer Tracksuits",
+      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center"
+    },
+    {
+      id: 6,
+      name: "Kids Casual Polo - Red",
+      originalPrice: "Rs.3,500.00",
+      salePrice: "Rs.1,999.99",
+      savePercent: "43%",
+      reviews: 1,
+      category: "Polo Shirts",
+      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop&crop=center"
     }
   ];
 
@@ -74,8 +100,13 @@ const KidsCollectionPage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {kidsProducts.map((product) => (
             <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="h-48 bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-500">[Product Image]</span>
+              <div className="h-48 relative overflow-hidden">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-300"
+                />
               </div>
               <div className="p-4">
                 <h3 className="font-semibold text-gray-900 mb-2">{product.name}</h3>

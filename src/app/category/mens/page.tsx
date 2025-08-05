@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const MensCollectionPage = () => {
   const mensProducts = [
     {
@@ -7,7 +9,8 @@ const MensCollectionPage = () => {
       salePrice: "Rs.2,999.99",
       savePercent: "40%",
       reviews: 209,
-      category: "Summer Tracksuits"
+      category: "Summer Tracksuits",
+      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center"
     },
     {
       id: 2,
@@ -16,7 +19,8 @@ const MensCollectionPage = () => {
       salePrice: "Rs.5,999.99",
       savePercent: "40%",
       reviews: 3,
-      category: "Safari Suits"
+      category: "Safari Suits",
+      image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=300&fit=crop&crop=center"
     },
     {
       id: 3,
@@ -25,7 +29,8 @@ const MensCollectionPage = () => {
       salePrice: "Rs.2,999.99",
       savePercent: "40%",
       reviews: 17,
-      category: "Summer Tracksuits"
+      category: "Summer Tracksuits",
+      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center"
     },
     {
       id: 4,
@@ -34,7 +39,28 @@ const MensCollectionPage = () => {
       salePrice: "Rs.5,999.99",
       savePercent: "40%",
       reviews: 0,
-      category: "Safari Suits"
+      category: "Safari Suits",
+      image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=300&fit=crop&crop=center"
+    },
+    {
+      id: 5,
+      name: "Excellence Green Polo - Premium Cotton",
+      originalPrice: "Rs.4,500.00",
+      salePrice: "Rs.2,399.99",
+      savePercent: "47%",
+      reviews: 3,
+      category: "Polo Shirts",
+      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop&crop=center"
+    },
+    {
+      id: 6,
+      name: "N/M Contrast - Premium Cotton Polo",
+      originalPrice: "Rs.7,000.00",
+      salePrice: "Rs.2,399.99",
+      savePercent: "66%",
+      reviews: 4,
+      category: "Polo Shirts",
+      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop&crop=center"
     }
   ];
 
@@ -74,8 +100,13 @@ const MensCollectionPage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {mensProducts.map((product) => (
             <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="h-48 bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-500">[Product Image]</span>
+              <div className="h-48 relative overflow-hidden">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-300"
+                />
               </div>
               <div className="p-4">
                 <h3 className="font-semibold text-gray-900 mb-2">{product.name}</h3>

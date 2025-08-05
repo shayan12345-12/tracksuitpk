@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const WomensCollectionPage = () => {
   const womensProducts = [
     {
@@ -7,7 +9,8 @@ const WomensCollectionPage = () => {
       salePrice: "Rs.4,399.99",
       savePercent: "27%",
       reviews: 0,
-      category: "Twinsets"
+      category: "Twinsets",
+      image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=300&fit=crop&crop=center"
     },
     {
       id: 2,
@@ -16,7 +19,8 @@ const WomensCollectionPage = () => {
       salePrice: "Rs.4,499.99",
       savePercent: "31%",
       reviews: 4,
-      category: "Co-ord Sets"
+      category: "Co-ord Sets",
+      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=300&fit=crop&crop=center"
     },
     {
       id: 3,
@@ -25,7 +29,8 @@ const WomensCollectionPage = () => {
       salePrice: "Rs.2,999.00",
       savePercent: "50%",
       reviews: 7,
-      category: "Tracksuits"
+      category: "Tracksuits",
+      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center"
     },
     {
       id: 4,
@@ -34,7 +39,28 @@ const WomensCollectionPage = () => {
       salePrice: "Rs.4,399.99",
       savePercent: "27%",
       reviews: 0,
-      category: "Twinsets"
+      category: "Twinsets",
+      image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=300&fit=crop&crop=center"
+    },
+    {
+      id: 5,
+      name: "AURA - Spendex Textured Navy Twinset",
+      originalPrice: "Rs.6,500.00",
+      salePrice: "Rs.4,299.99",
+      savePercent: "34%",
+      reviews: 2,
+      category: "Twinsets",
+      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=300&fit=crop&crop=center"
+    },
+    {
+      id: 6,
+      name: "Power Mesh - Spendex Tee Twinset",
+      originalPrice: "Rs.5,500.00",
+      salePrice: "Rs.3,999.99",
+      savePercent: "27%",
+      reviews: 1,
+      category: "Twinsets",
+      image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=300&fit=crop&crop=center"
     }
   ];
 
@@ -74,8 +100,13 @@ const WomensCollectionPage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {womensProducts.map((product) => (
             <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="h-48 bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-500">[Product Image]</span>
+              <div className="h-48 relative overflow-hidden">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-300"
+                />
               </div>
               <div className="p-4">
                 <h3 className="font-semibold text-gray-900 mb-2">{product.name}</h3>
