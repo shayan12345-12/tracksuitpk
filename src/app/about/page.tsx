@@ -8,7 +8,7 @@ const AboutPage = () => {
           <div className="prose max-w-none">
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">Our Story</h2>
             <p className="text-gray-700 mb-6">
-              Tracksuit.pk is Pakistan's premier destination for high-quality tracksuits and athletic wear. 
+              Tracksuit.pk is Pakistan&apos;s premier destination for high-quality tracksuits and athletic wear. 
               We specialize in providing premium tracksuits that combine style, comfort, and durability for 
               both casual and athletic use.
             </p>
