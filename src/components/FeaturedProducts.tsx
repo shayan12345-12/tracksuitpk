@@ -10,7 +10,7 @@ const FeaturedProducts = () => {
       salePrice: "Rs.2,999.99",
       savePercent: "40%",
       reviews: 209,
-      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center"
+      image: "/placeholder-tracksuit-1.jpg"
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ const FeaturedProducts = () => {
       salePrice: "Rs.5,999.99",
       savePercent: "40%",
       reviews: 3,
-      image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=300&fit=crop&crop=center"
+      image: "/placeholder-tracksuit-2.jpg"
     },
     {
       id: 3,
@@ -28,7 +28,7 @@ const FeaturedProducts = () => {
       salePrice: "Rs.2,999.99",
       savePercent: "40%",
       reviews: 17,
-      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center"
+      image: "/placeholder-tracksuit-3.jpg"
     },
     {
       id: 4,
@@ -37,7 +37,7 @@ const FeaturedProducts = () => {
       salePrice: "Rs.5,999.99",
       savePercent: "40%",
       reviews: 0,
-      image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=300&fit=crop&crop=center"
+      image: "/placeholder-tracksuit-4.jpg"
     }
   ];
 
@@ -52,13 +52,15 @@ const FeaturedProducts = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {featuredProducts.map((product) => (
           <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-            <div className="h-48 relative overflow-hidden">
-              <Image
-                src={product.image}
-                alt={product.name}
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
-              />
+            <div className="h-48 relative overflow-hidden bg-gradient-to-br from-blue-100 to-gray-200">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-blue-500 rounded-full mx-auto mb-2 flex items-center justify-center">
+                    <span className="text-white text-2xl">👕</span>
+                  </div>
+                  <p className="text-gray-600 text-sm font-medium">{product.name.split(' - ')[0]}</p>
+                </div>
+              </div>
             </div>
             <div className="p-4">
               <h3 className="font-semibold text-gray-900 mb-2">{product.name}</h3>

@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const HeroBanner = () => {
   return (
@@ -12,12 +13,12 @@ const HeroBanner = () => {
             Enjoy Free Delivery on Orders above Rs. 5000!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+            <Link href="/products" className="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
               Shop Now
-            </button>
-            <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors">
+            </Link>
+            <Link href="/category/mens" className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors">
               View Collections
-            </button>
+            </Link>
           </div>
         </div>
       </div>

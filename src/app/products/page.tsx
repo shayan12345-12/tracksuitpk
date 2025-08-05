@@ -1,7 +1,13 @@
-import Image from "next/image";
+"use client";
+import { useSearchParams } from "next/navigation";
+import { useState, useEffect } from "react";
 
 const ProductsPage = () => {
-  const products = [
+  const searchParams = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
+
+  const allProducts = [
     {
       id: 1,
       name: "Athlete Pro - Dri-Fit Tracksuit",
@@ -10,7 +16,7 @@ const ProductsPage = () => {
       savePercent: "40%",
       reviews: 209,
       category: "Summer Tracksuits",
-      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center"
+      color: "blue"
     },
     {
       id: 2,
@@ -20,7 +26,7 @@ const ProductsPage = () => {
       savePercent: "40%",
       reviews: 3,
       category: "Safari Suits",
-      image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=300&fit=crop&crop=center"
+      color: "gray"
     },
     {
       id: 3,
@@ -30,7 +36,7 @@ const ProductsPage = () => {
       savePercent: "40%",
       reviews: 17,
       category: "Summer Tracksuits",
-      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center"
+      color: "green"
     },
     {
       id: 4,
@@ -40,7 +46,7 @@ const ProductsPage = () => {
       savePercent: "40%",
       reviews: 0,
       category: "Safari Suits",
-      image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=300&fit=crop&crop=center"
+      color: "black"
     },
     {
       id: 5,
@@ -50,7 +56,7 @@ const ProductsPage = () => {
       savePercent: "47%",
       reviews: 3,
       category: "Polo Shirts",
-      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop&crop=center"
+      color: "green"
     },
     {
       id: 6,
@@ -60,7 +66,7 @@ const ProductsPage = () => {
       savePercent: "47%",
       reviews: 1,
       category: "Polo Shirts",
-      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop&crop=center"
+      color: "beige"
     },
     {
       id: 7,
@@ -70,7 +76,7 @@ const ProductsPage = () => {
       savePercent: "44%",
       reviews: 0,
       category: "Trousers",
-      image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=300&fit=crop&crop=center"
+      color: "black"
     },
     {
       id: 8,
@@ -80,9 +86,59 @@ const ProductsPage = () => {
       savePercent: "40%",
       reviews: 1,
       category: "T-Shirts",
-      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop&crop=center"
+      color: "white"
     }
   ];
+
+  useEffect(() => {
+    const search = searchParams.get('search');
+    if (search) {
+      setSearchQuery(search);
+      const filtered = allProducts.filter(product =>
+        product.name.toLowerCase().includes(search.toLowerCase()) ||
+        product.category.toLowerCase().includes(search.toLowerCase())
+      );
+      setFilteredProducts(filtered);
+    } else {
+      setFilteredProducts(allProducts);
+    }
+  }, [searchParams]);
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      const filtered = allProducts.filter(product =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.category.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredProducts(filtered);
+    } else {
+      setFilteredProducts(allProducts);
+    }
+  };
+
+  const getColorClass = (color: string) => {
+    const colors: { [key: string]: string } = {
+      blue: "from-blue-100 to-blue-200",
+      gray: "from-gray-100 to-gray-200",
+      green: "from-green-100 to-green-200",
+      black: "from-gray-800 to-gray-900",
+      beige: "from-yellow-100 to-orange-100",
+      white: "from-gray-50 to-white"
+    };
+    return colors[color] || "from-blue-100 to-gray-200";
+  };
+
+  const getEmoji = (category: string) => {
+    const emojis: { [key: string]: string } = {
+      "Summer Tracksuits": "👕",
+      "Safari Suits": "🎽",
+      "Polo Shirts": "👔",
+      "T-Shirts": "👕",
+      "Trousers": "👖"
+    };
+    return emojis[category] || "👕";
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -91,10 +147,12 @@ const ProductsPage = () => {
         
         {/* Filters */}
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <form onSubmit={handleSearch} className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <input 
               type="text" 
               placeholder="Search products..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               className="px-4 py-2 border border-gray-300 rounded-lg"
             />
             <select className="px-4 py-2 border border-gray-300 rounded-lg">
@@ -109,23 +167,34 @@ const ProductsPage = () => {
               <option>Rs. 3,000 - Rs. 5,000</option>
               <option>Above Rs. 5,000</option>
             </select>
-            <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
+            <button type="submit" className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
               Filter
             </button>
-          </div>
+          </form>
         </div>
+
+        {/* Search Results Info */}
+        {searchQuery && (
+          <div className="mb-6">
+            <p className="text-gray-600">
+              Showing {filteredProducts.length} results for "{searchQuery}"
+            </p>
+          </div>
+        )}
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
             <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="h-48 relative overflow-hidden">
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-300"
-                />
+              <div className={`h-48 relative overflow-hidden bg-gradient-to-br ${getColorClass(product.color)}`}>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-blue-500 rounded-full mx-auto mb-2 flex items-center justify-center">
+                      <span className="text-white text-2xl">{getEmoji(product.category)}</span>
+                    </div>
+                    <p className="text-gray-600 text-sm font-medium">{product.name.split(' - ')[0]}</p>
+                  </div>
+                </div>
               </div>
               <div className="p-4">
                 <h3 className="font-semibold text-gray-900 mb-2">{product.name}</h3>
@@ -145,6 +214,22 @@ const ProductsPage = () => {
             </div>
           ))}
         </div>
+
+        {/* No Results */}
+        {filteredProducts.length === 0 && searchQuery && (
+          <div className="text-center py-12">
+            <p className="text-gray-500 text-lg">No products found for "{searchQuery}"</p>
+            <button 
+              onClick={() => {
+                setSearchQuery("");
+                setFilteredProducts(allProducts);
+              }}
+              className="mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
+            >
+              Clear Search
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
